@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link href="{% static 'app/css/signin.css' %}" rel="stylesheet" type="text/css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+	
+
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="static/app/images/icons/foodze.jpeg" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form method="post" action="" name="upform">{% csrf_token %}
+      <!-- <input type="text" id="name1" class="fadeIn second" name="uname" required placeholder="Name">
+      
+      <input type="text" id="email1" class="fadeIn third" name="uemail" required placeholder="Email">
+      
+      <input type="text" id="number" class="fadeIn third" name="unumber" required placeholder="Contact number">
+
+      <input type="text" id="pass1" class="fadeIn third" name="upass" required placeholder="password"> -->
+      <label>Username & Email</label>
+      {{form.username}}
+      <div class="m" >
+        <label></label>
+        {{form.email}}
+      </div>
+      <label>Number</label>
+      {{form.number}}
+      <label>Password</label>
+      {{form.password}}
+      
+      
+      <input type="submit" class="fadeIn fourth" value="Sign Up">
+      {% if error %}
+        <div class="alert alert-danger" role="alert">
+          {{error}}
+        </div>
+      {% endif %}
+     
+
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="{% url 'signin' %}">Sign in</a>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+</body>
+</html>

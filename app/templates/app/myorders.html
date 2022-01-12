@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="{% static 'app/fonts/fontawesome/css/all.min.css' %}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'app/css/plugins.css' %}" />
+	<link rel="stylesheet" type="text/css" media="screen" href="{% static 'app/css/main.css' %}" />
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'app/css/image/favicon.ico' %}">
+</head>
+<body>
+    
+    <div class="col-lg-3 col-12" style="margin-top: 4em;">
+        <div class="myaccount-tab-menu nav" role="tablist">
+            
+            <!-- <a href="#orders" data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Orders</a> -->
+            
+            <!-- <a href="#payment-method" data-bs-toggle="tab"><i class="fa fa-credit-card"></i>
+                Payment
+                Method</a> -->
+            <a href="/" data-bs-toggle="tab"><i class="fa fa-map-marker"></i>
+                 Home</a>
+
+
+            <a href="myaccount" data-bs-toggle="tab"><i class="fa fa-map-marker"></i>
+                    My account</a>
+            
+            
+            
+        </div>
+    </div>
+
+
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="fw-bold">Orders</h1>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Date ordered</th>
+                                    <th>Status</th>
+                                    <th>Image</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in value1 %}
+                                 {% for item in value2 %}
+                                    {% if order.id == item.order_id%}
+                                        <tr>
+                                            <td>{{item.product.name}} </td>
+                                            <td>&#x20b9;{{item.price}} </td>
+                                            <td>{{order.date_added}}</td>
+                                            <td>{{order.status}} </td>
+                                            
+                                            {% if item.product.image %}
+                                                <td>
+                                                    <img src="{{ item.product.image.url }}" alt="" class="prod-size">
+                                                </td>
+                                            
+                                            {% endif %}
+                                            <td>
+                                                {% if order.status == 'pending' or order.status == 'dispatched' %}
+                                                    <a href="/cancelproduct/{{order.id}}" class="btn btn-danger badge">Cancel</a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                 {% endfor %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

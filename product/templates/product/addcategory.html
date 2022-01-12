@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'adminlogin' %}">Admin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                User Operations
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'viewuser' %}">User info</a>
+                
+              </div>
+              
+            
+          </ul>
+          <div class="ll">
+            <form method="post" action="logout">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary me-3" style="margin-right: 2em;">
+                    logout
+                </button>
+            </form>
+            </div>
+              
+
+            <div class="bb">
+              
+                
+                  <a href="addproduct"><button type="button" class="btn btn-primary me-3" style="margin-right: 2em;">addproduct</button></a>
+                      
+            </div>
+            <div class="bb">
+              
+                
+              <a href="listproduct"><button type="button" class="btn btn-primary me-3" style="margin-right: 2em;">List products</button></a>
+                  
+            </div>
+
+            <div>
+              <form method="post" action="search" class="form-inline my-2 my-lg-0">{% csrf_token %}
+                <input name="search1" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+
+            
+        </div>
+    </nav>
+    {% if error %}
+        {{error}}
+    {% endif %}
+    <form method="post">{% csrf_token %}
+        <div class="col" style="width: fit-content;margin-top: 2em;margin-left: 4em;">
+            <input type="text" class="form-control" id="catname" placeholder="Category name" name="catname">
+            <button style="margin-left: 4em;margin-top: 1em;" type="submit" class="btn btn-primary">Save</button>
+        </div>
+            
+    </form>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+</body>
+</html>

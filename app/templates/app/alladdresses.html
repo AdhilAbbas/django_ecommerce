@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'app/css/plugins.css' %}" />
+	<link rel="stylesheet" type="text/css" media="screen" href="{% static 'app/css/main.css' %}" />
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'app/css/image/favicon.ico' %}">
+</head>
+<body>
+<div class="page-section inner-page-sec-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+
+                    <div class="col-lg-3 col-12">
+                        <div class="myaccount-tab-menu nav" role="tablist">
+                            
+                            
+                            <a href="{% url 'addaddress' %}" data-bs-toggle="tab"><i class="fa fa-map-marker"></i>
+                                Add address</a>
+
+
+                            <a href="alladdresses" data-bs-toggle="tab"><i class="fa fa-map-marker"></i>
+                                    All addresses</a>
+                            
+                            <a href="{% url 'myaccount' %}"><i class="fas fa-sign-out-alt"></i> My Account</a>
+                        </div>
+                    </div>  
+                    <div class="col-lg-9 col-12 mt--30 mt-lg--0">
+                        <div class="tab-content" id="myaccountContent">
+                            <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                <div class="myaccount-content">
+                                    <div class="welcome mb-20">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="well well-sm">
+
+
+
+
+
+
+
+                                                        {% for a in address %}
+                                                            <form action="eachaddressupdate/{{a.id}}" class="form-horizontal" method="post">{% csrf_token %}
+                                                                <fieldset>
+                                                                    
+                                                                
+                                                                    
+
+                                                                    <div class="form-group">
+                                                                    <div class="myaccount-content">
+                                                                        <h3>Address Details</h3>
+                                                                    
+                                                                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
+                                                                        <div class="col-md-8">
+                                                                            <input class="form-control" id="message" name="name1" placeholder="Name" value={{a.name}}>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <input class="form-control" id="message" name="phone" placeholder="Phone" value={{a.phone}}>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <input class="form-control" id="message" name="address" placeholder="Address" value={{a.Address}}>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <input class="form-control" id="message" name="state" placeholder="state" value={{a.state}}>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <input class="form-control" id="message" name="city" placeholder="city" value={{a.city}}>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <input class="form-control" id="message" name="zipcode" placeholder="zipcode" value={{a.zipcode}}>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                        <div class="form-group">
+                                                                            <div class="col-md-12 text-center mt-3">
+                                                                                <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                    
+
+                                                                </fieldset>
+                                                                
+                                                            </form>
+                                                                        <div class="form-group">
+                                                                            <div class="col-md-12 text-center ">
+                                                                            <a href="/removeaddress/{{a.id}}"> <button  class="btn btn-danger btn-lg">Remove</button></a>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                        
+                                                        {% endfor %}
+                                                    
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>   
+
+
+
+
+            <script src="js/plugins.js"></script>
+            <script src="js/ajax-mail.js"></script>
+            <script src="js/custom.js"></script>   
+
+</body>
+</html>

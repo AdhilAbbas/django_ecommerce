@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"
+        integrity="sha256-VBLiveTKyUZMEzJd6z2mhfxIqz3ZATCuVMawPZGzIfA=" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css"
+        integrity="sha256-XPTBwC3SBoWHSmKasAk01c08M6sIA5gF5+sRxqak2Qs=" crossorigin="anonymous" />
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"
+        integrity="sha256-z0oKYg6xiLq3yJGsp/LsY9XykbweQlHl42jHv2XTBz4=" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href=".">Admin</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            User Operations
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="viewuser">User info</a>
+
+                        </div>
+
+
+                </ul>
+                <div class="ll">
+                    <form method="post" action="logout">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary me-3" style="margin-right: 2em;">
+                            logout
+                        </button>
+                    </form>
+                </div>
+
+
+                <div class="bb">
+
+
+                    <a href="{% url 'addproduct' %}"><button type="button" class="btn btn-primary me-3"
+                            style="margin-right: 2em;">addproduct</button></a>
+
+                </div>
+                <div class="bb">
+
+
+                    <a href="product/listproduct"><button type="button" class="btn btn-primary me-3"
+                            style="margin-right: 2em;">List products</button></a>
+
+                </div>
+
+                <div class="bb">
+
+
+                    <a href="{% url 'addcategory' %}"><button type="button" class="btn btn-primary me-3"
+                            style="margin-right: 2em;">Add category</button></a>
+
+                </div>
+                <div class="bb">
+
+
+                    <a href="orderedproducts"><button type="button" class="btn btn-primary me-3"
+                            style="margin-right: 2em;">Ordered products</button></a>
+
+                </div>
+
+                <div class="bb">
+
+
+                    <a href="discount"><button type="button" class="btn btn-primary me-3"
+                            style="margin-right: 2em;">Discount Management</button></a>
+
+                </div>
+                <div class="bb">
+
+
+                    <a href="addcoupon"><button type="button" class="btn btn-primary me-3"
+                            style="margin-right: 2em;">Add
+                            coupon</button></a>
+
+                </div>
+                <div class="bb">
+
+
+                    <a href="managecoupon"><button type="button" class="btn btn-primary me-3"
+                            style="margin-right: 2em;">Manage coupon</button></a>
+
+                </div>
+
+
+
+                <div>
+                    <form method="post" action="search" class="form-inline my-2 my-lg-0">{% csrf_token %}
+                        <input name="search1" class="form-control mr-sm-2" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+
+
+            </div>
+        </nav>
+
+
+
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="contain" style="width: 80%;height: 80%;margin-top: 5em;margin-left: 5em;">
+                    <canvas id="myChart"></canvas>
+                </div>
+
+                <div class="col-lg-6 grid-margin stretch-card" style="margin-top: 3em;margin-left: 14em;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Payment mode</h4>
+                            <canvas id="doughnutChart" style="height:250px"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 grid-margin stretch-card" style="margin-top: 4em; margin-left: 14em;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Order status</h4>
+                            <canvas id="pieChart" style="height:250px"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+        <script>
+
+            const labels = [
+
+                {% for i in total %}
+            '{{i.date_added__day}}/{{i.date_added__month}}/{{i.date_added__year}}',
+                {% endfor %}
+           
+        ];
+
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Daily total selling',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [{% for i in total %} {{ i.total__sum }}, {% endfor %}]
+            }]
+        };
+
+            const config = {
+                type: 'line',
+                data: data,
+                options: {}
+            };
+        </script>
+
+
+        <script>
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+        </script>
+
+
+
+
+
+        <script>
+            var doughnutPieData = {
+                datasets: [{
+                    data: [{% for i in status %} {{ i.mode__count }}, {% endfor %}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.5)',
+                'rgba(54, 162, 235, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(75, 192, 192, 0.5)',
+                'rgba(153, 102, 255, 0.5)',
+                'rgba(255, 159, 64, 0.5)'
+            ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+        }],
+
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: [
+                {% for i in status %} '{{ i.mode }}', {% endfor %}
+        ]
+      };
+            var doughnutPieOptions = {
+                responsive: true,
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                }
+            };
+        </script>
+        <script>
+            if ($("#doughnutChart").length) {
+                var doughnutChartCanvas = $("#doughnutChart").get(0).getContext("2d");
+                var doughnutChart = new Chart(doughnutChartCanvas, {
+                    type: 'doughnut',
+                    data: doughnutPieData,
+                    options: doughnutPieOptions
+                });
+            }
+        </script>
+        <script>
+            var doughnutPieData2 = {
+                datasets: [{
+                    data: [{% for i in status2 %} {{ i.status__count }}, {% endfor %}],
+            backgroundColor: [
+                'rgba(255, 99, 132,1)',
+                'rgba(54, 162, 235,1)',
+                'rgba(245, 106, 96, 1)',
+                'rgba(75, 2, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(256, 159, 64, 1)',
+                'rgba(151, 9, 253, 1)',
+                'rgba(256, 159, 64,1)'
+            ],
+                borderColor: [
+                    'rgba(255, 99, 132,1)',
+                    'rgba(54, 162, 235,1)',
+                    'rgba(245, 106, 96, 1)',
+                    'rgba(75, 2, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(256, 159, 64, 1)',
+                    'rgba(151, 9, 253, 1)',
+                    'rgba(256, 159, 64,1)'
+                ],
+    }],
+
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: [
+                {% for i in status2 %} "{{ i.status }}", {% endfor %}
+    ]
+};
+            var doughnutPieOptions2 = {
+                responsive: true,
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                }
+            };
+        </script>
+        <script>
+            if ($("#pieChart").length) {
+                var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+                var pieChart = new Chart(pieChartCanvas, {
+                type: 'pie',
+                data: doughnutPieData2,
+                options: doughnutPieOptions2
+                });
+            }
+        </script>
+
+
+        <form method='post' action="salesreport1">{% csrf_token %}
+            <div class="container" style="margin-left: 35em;margin-top: 5em;">
+                <div class="row col-lg-6">
+                    <p style="margin-left: 5em;"> Select Date</p>
+                    <div class="input-group date" style="margin-left: 5em;" id="datetimepicker1"
+                        data-target-input="nearest">
+                        <input type="text" name="date1" class="form-control datetimepicker-input"
+                            data-target="#datetimepicker1" />
+                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+
+                    <script>
+                        $(function () {
+                            $("#datetimepicker1").datetimepicker({ format: 'YYYY-MM-DD' });
+                        });
+                    </script>
+
+                    <div class="input-group date" style="margin-top: 2em;margin-left: 5em;" id="datetimepicker"
+                        data-target-input="nearest">
+                        <input type="text" name="date2" class="form-control datetimepicker-input"
+                            data-target="#datetimepicker" />
+                        <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+
+                    <script>
+                        $(function () {
+                            $("#datetimepicker").datetimepicker({ format: 'YYYY-MM-DD' });
+                        });
+                    </script>
+
+
+                    <div style="margin-left: 5em;margin-top: 1em;">
+                        <button type="submit" btn btn-success>Get report</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="cache-control" content="max-age=604800" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>GreatKart | One of the Biggest Online Shopping Platform</title>
+
+	<link href="{% static 'app/images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
+
+	<!-- jQuery -->
+	<script src="{% static 'app/js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
+
+	<!-- Bootstrap4 files-->
+	<script src="{% static 'app/js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+	<link href="{% static 'app/css/bootstrap.css' %}" rel="stylesheet" type="text/css" />
+
+	<!-- Font awesome 5 -->
+	<link href="{% static 'app/fonts/fontawesome/css/all.min.css' %}" type="text/css" rel="stylesheet">
+
+	<!-- custom style -->
+	<link href="{% static 'app/css/ui.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'app/css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+
+
+
+	<!-- custom javascript -->
+	<script src="{% static 'app/js/script.js' %}" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		/// some script
+
+		// jquery ready start
+		$(document).ready(function () {
+			// jQuery code
+		});
+// jquery end
+	</script>
+
+</head>
+
+<body>
+
+
+	<header class="section-header">
+
+
+		<section class="header-main border-bottom">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-2 col-md-3 col-6">
+						<a href="./" class="brand-wrap">
+							<img class="logo" src="static/app/images/logo.png">
+						</a> <!-- brand-wrap.// -->
+					</div>
+					<div class="col-lg col-sm col-md col-6 flex-grow-0">
+						
+					</div> <!-- col.// -->
+					<a href="/" class="btn btn-outline-primary">Store</a>
+					<div class="col-lg  col-md-6 col-sm-12 col">
+						<form action="#" class="search">
+							<div class="input-group w-100">
+								<input type="text" class="form-control" style="width:60%;" placeholder="Search">
+
+								<div class="input-group-append">
+									<button class="btn btn-primary" type="submit">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</form> <!-- search-wrap .end// -->
+					</div> <!-- col.// -->
+					<div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+						<div class="d-flex justify-content-end mb-3 mb-lg-0">
+							<div class="widget-header">
+								<small class="title text-muted"></small>
+								<div>
+									<a href="logout">Logout</a> <span class="dark-transp"> | </span>
+
+								</div>
+							</div>
+							<a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">
+								<div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i>
+								</div>
+								<span class="badge badge-pill badge-danger notify">0</span>
+							</a>
+						</div> <!-- widgets-wrap.// -->
+					</div> <!-- col.// -->
+				</div> <!-- row.// -->
+			</div> <!-- container.// -->
+		</section> <!-- header-main .// -->
+
+
+
+
+	</header> <!-- section-header.// -->
+	<section class="section-content padding-y bg">
+		<div class="container">
+
+
+
+			<!-- ============================ COMPONENT 2 ================================= -->
+			<div class="row">
+				<main class="col-md-8">
+
+					<article class="card mb-4">
+						<div class="card-body">
+							<h4 class="card-title mb-4">Review cart</h4>
+							<div class="row">
+							{% for i in values %}
+								<div class="col-md-6">
+
+									<figure class="itemside  mb-4">
+										<div class="aside"><img src="{{i.product.image}}" class="border img-sm"></div>
+										<figcaption class="info">
+											<p>{{i.product.name}} </p>
+											{% if i.discountprice == 0 %}
+											<span class="text-muted">&#x20b9;{{i.totalprice}}</span>
+											{% else %}
+											<span class="text-muted">&#x20b9;{{i.discountprice}}</span>
+											{% endif %}
+
+										</figcaption>
+									</figure>
+
+								</div> <!-- col.// -->
+								
+
+
+								<!-- <div class="input-group input-spinner">
+									<div class="input-group-prepend">
+									<a href="checkoutquantitydown/{{i.id}}"><button class="btn btn-light" type="button" id="button-plus"> <i class="fa fa-minus"></i> </button></a>
+									</div>
+									<input type="text" class="form-control"  value="{{i.quantity}}">
+									<div class="input-group-append">
+									<a href="checkoutquantityup/{{i.id}}"><button class="btn btn-light" type="button" id="button-minus"> <i class="fa fa-plus"></i> </button></a>
+									</div>
+								</div> input-group.// -->
+							{% endfor %}
+							</div> <!-- row.// -->
+							<div class="col"> 
+								
+							</div> 
+						</div> <!-- card-body.// -->
+					</article> <!-- card.// -->
+
+					{% for i in address %}
+					<div class="b" style="border: solid 0.5em;">
+						<article class="card mb-4">
+							<div class="card-body">
+								<h4 class="card-title mb-4">Contact info</h4>
+								<form action="">
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label> Name</label>
+											<input type="text" placeholder="Type here" value="{{i.name}}"
+												class="form-control">
+										</div>
+
+										<div class="form-group col-sm-6">
+											<label>Phone</label>
+											<input type="text" value="{{i.phone}}" class="form-control">
+										</div>
+
+									</div> <!-- row.// -->
+								</form>
+							</div> <!-- card-body.// -->
+						</article> <!-- card.// -->
+
+
+						<article class="card mb-4">
+							<div class="card-body">
+								<h4 class="card-title mb-4">Delivery info</h4>
+
+								<form action="">
+
+
+									<div class="row">
+
+										<div class="form-group col-sm-6">
+											<label>State*</label>
+											<input type="text" placeholder="Type here" value="{{i.state}}"
+												class="form-control">
+										</div>
+										<div class="form-group col-sm-8">
+											<label>Address</label>
+											<input type="text" placeholder="Type here" value="{{i.Address}}"
+												class="form-control">
+										</div>
+
+
+										<div class="form-group col-sm-4">
+											<label>Postal code</label>
+											<input type="text" placeholder="" value="{{i.zipcode}}"
+												class="form-control">
+										</div>
+
+
+									</div> <!-- row.// -->
+								</form>
+								{% if i.is_active == 0 %}
+								<a href="selectaddress/{{i.id}}"><button type="button"
+										class="btn btn-primary">Select</button></a>
+								{% else %}
+								<a href="selectaddress/{{i.id}}"><button type="button"
+										class="btn btn-primary">Unselect</button></a>
+								{% endif %}
+
+							</div> <!-- card-body.// -->
+						</article> <!-- card.// -->
+					</div>
+					{% endfor %}
+
+
+
+
+				</main> <!-- col.// -->
+				<aside class="col-md-4">
+					<div class="card">
+						<div class="card-body">
+							<dl class="dlist-align">
+								<dt>Total price:</dt>
+								{% if discount.discountprice__sum == 0 %}
+								<dd class="text-right">&#x20b9;{{s.totalprice__sum}}</dd>
+
+
+								{% else %}
+								<dd class="text-right">&#x20b9;{{discount.discountprice__sum}}</dd>
+								{% endif %}
+
+								{% if coupon %}
+								<dd class="">{{coupon.couponofferprice}}</dd>
+								{% endif %}
+
+							</dl>
+
+
+							<hr>
+							{% for i in values %}
+							<div class="card-body">
+								<form action="applycoupon?id={{i.id}}" method="post">{% csrf_token %}
+									{% endfor %}
+									<div class="form-group"> <label>Have coupon?</label>
+										<div class="input-group"> <input type="text" class="form-control coupon"
+												name="coupon" placeholder="Coupon code"> <span
+												class="input-group-append"> <button
+													class="btn btn-primary btn-apply coupon"
+													type="submit">Apply</button> </span> </div>
+										{% if error %}
+										{{error}}
+										{% endif %}
+									</div>
+								</form>
+							</div>
+
+							<p class="text-center mb-3">
+								<img src="static/app/images/misc/payments.png" height="26">
+							</p>
+							<form method="post" id="checkoutform" name="checkout" action="ordercomplete">{% csrf_token %}
+								
+								<h3 class="d-none sr-only">Payment method</h3>
+								<select onchange="change()"class="nice-select" style="margin-left: 1em;margin-top: 1em;" name="mode"
+									required>
+									<option value="0">Choose payment mode</option>
+									<option value="cod" selected>Pay on Delivery</option>
+									<option value="Razorpay">Razorpay</option>
+									<option value="paypal">paypal</option>
+
+								</select>
+								{% if coupon %}
+									<input value="{{coupon.couponofferprice}}" type="hidden" name="hide">
+								{% else %}
+
+
+									{% if discount.discountprice__sum == 0 %}
+										<input value="{{s.totalprice__sum}}" type="hidden" name="hide">
+									{% else %}
+										<input value="{{discount.discountprice__sum}}" type="hidden" name="hide">
+									{% endif %}
+								{% endif %}
+								
+
+
+							</form>
+							<div id="paypal-button-container" style="margin-top :2em;display: none;"></div>
+
+							<button class="btn btn-primary btn-block rzp-button1" id="rzp-button1"
+								style="margin-top: 2em;"> Place
+								Order
+							</button>
+							<script>
+								function change(){
+									var mode = document.checkout.mode.value;
+									if (mode=='paypal'){
+										document.getElementById('paypal-button-container').style.display='block';
+									}
+									else{
+										document.getElementById('paypal-button-container').style.display='none';
+									}
+								}
+							</script>
+
+
+						</div> <!-- card-body.// -->
+
+					</div> <!-- card.// -->
+					<button data-toggle="modal" data-target="#exampleModal" class="btn-address"
+						style="margin-top: 5em;">+ Add new address</button>
+				</aside> <!-- col.// -->
+
+			</div> <!-- row.// -->
+
+			<!-- ============================ COMPONENT 2 END//  ================================= -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Add an Address</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<form class="inline-form" method="POST" action="checkoutaddaddress"> {% csrf_token %}
+								<div class="mb-3">
+									<input type="hidden" name="next" value="/cart/checkout">
+									<input name="name" type="text" class="form-control" id="exampleInputEmail1"
+										aria-describedby="emailHelp" placeholder="Enter Full Name">
+								</div>
+								<div class="col-lg-12 col-12 mb--30">
+									<input name="state" type="text" class="form-control" id="exampleInputPassword1"
+										placeholder="Enter State/Province">
+								</div>
+								<div class="col-lg-12 col-12 mb--30">
+									<input name="city" type="text" class="form-control" id="exampleInputPassword1"
+										placeholder="Enter City">
+								</div>
+								<div class="col-lg-12 col-12 mb--30">
+									<textarea name="address" class="form-control" id="" cols="30" rows="3"
+										placeholder="Enter Address"></textarea>
+								</div>
+								<div class="col-lg-12 col-12 mb--30">
+									<input name="zip" type="text" class="form-control" id="exampleInputPassword1"
+										placeholder="Enter Zip code">
+								</div>
+								<div class="col-lg-12 col-12 mb--30">
+									<input name="phone" type="text" class="form-control" id="exampleInputPassword1"
+										placeholder="Enter Phone number">
+								</div>
+
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button type="submit" class="btn btn-primary">Save Address</button>
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <button id="rzp-button1">Pay</button> -->
+
+
+
+
+		</div> <!-- container .//  -->
+	</section>
+	<!-- ========================= SECTION CONTENT END// ========================= -->
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script>
+		var options = {
+			"key": "rzp_test_1TzsOm36uDaR3F", // Enter the Key ID generated from the Dashboard
+			"amount": "", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+			"currency": "INR",
+			"name": "Freshome",
+			"description": "Test Transaction",
+			"image": "data:image/png;base64,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",
+			"order_id": "{{ paymentid }}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+			"handler": function (response) {
+				// alert(response.razorpay_payment_id);
+				// alert(response.razorpay_order_id);
+				// alert(response.razorpay_signature)
+				$('form#checkoutform').submit();
+			},
+			"prefill": {
+				"name": "Adhil",
+				"email": "adhil@gmail.com",
+				"contact": "6282441936"
+			},
+			"notes": {
+				"address": "Freshome Corporate Office"
+			},
+			"theme": {
+				"color": "#3399cc"
+			}
+		};
+		var rzp1 = new Razorpay(options);
+		rzp1.on('payment.failed', function (response) {
+			alert(response.error.code);
+			alert(response.error.description);
+			alert(response.error.source);
+			alert(response.error.step);
+			alert(response.error.reason);
+			alert(response.error.metadata.order_id);
+			alert(response.error.metadata.payment_id);
+		});
+		document.getElementById('rzp-button1').onclick = function (e) {
+			payment_method = document.checkout.mode.value;
+			if (payment_method == 'Razorpay') {
+				rzp1.open();
+				e.preventDefault();
+			}
+			else if (payment_method == 'cod') {
+				$('form#checkoutform').submit();
+
+			}
+
+
+
+		}
+	</script>
+
+
+
+	<script
+		src="https://www.paypal.com/sdk/js?client-id=AZ7QoeMmBt6XY04teoVnOdeDbfxq1OXtR1_oXNlWq6dqxqN-V0mFm_Gt-vZGF5OkEKbjKpcdneTCa8RW&currency=USD&disable-funding=credit"></script>
+	<script>
+		// Render the PayPal button into #paypal-button-container
+		paypal.Buttons({
+			style: {
+                color:  'blue',
+                shape:  'pill',
+                label:  'pay',
+				layout: 'horizontal',
+                height: 40
+            },
+
+			// Set up the transaction
+			createOrder: function (data, actions) {
+				total_price = document.checkout.hide.value
+				return actions.order.create({
+					purchase_units: [{
+						amount: {
+							value: total_price
+						}
+					}]
+				});
+			},
+
+			// Finalize the transaction
+			onApprove: function (data, actions) {
+				return actions.order.capture().then(function (orderData) {
+					// Successful capture! For demo purposes:
+					console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+					var transaction = orderData.purchase_units[0].payments.captures[0];
+					alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+					$('form#checkoutform').submit();
+					// Replace the above to show a success message within this page, e.g.
+					// const element = document.getElementById('paypal-button-container');
+					// element.innerHTML = '';
+					// element.innerHTML = '<h3>Thank you for your payment!</h3>';
+					// Or go to another URL:  actions.redirect('thank_you.html');
+				});
+			}
+
+
+		}).render('#paypal-button-container');
+	</script>
+
+
+	<!-- ========================= SECTION CONTENT END// ========================= -->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

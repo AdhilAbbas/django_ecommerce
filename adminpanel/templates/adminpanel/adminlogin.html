@@ -1,0 +1,114 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="{% static 'adminpanel/adminlogin.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Admin Login</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">User Login <span class="sr-only">(current)</span></a>
+        </li>
+        
+        
+      </ul>
+      
+    </div>
+  </nav>
+  
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+    
+    </div>
+
+    <!-- Login Form -->
+    <form method="post" name="upform">
+    {% csrf_token %}
+      <input name="name2" type="text" id="login" class="fadeIn second"  placeholder="username">
+      <div style="display: none;" id="usererr">
+        <p style="margin-top:19px;color: red;">username shouldn't contain special characters and whitespaces!</p>
+      </div>
+      <div style="margin-top: -20px; display: none;" id="usererror">
+        <p style="margin-top:19px;color: red;">username required!</p>
+      </div>
+
+      <input name="pass2" type="text" id="password" class="fadeIn third" placeholder="password">
+      <div style="margin-top: -20px; display: none;" id="passlenerror">
+        <p style="margin-top:19px;color: red;">Password should be atleast 8 characters!</p>
+      </div>
+        
+
+      <input type="submit" onclick="return validate()" class="fadeIn fourth" value="Log In">
+      {% if error %}
+            
+                <div class="ee" style="color: red;">
+                    {{ error }}
+            
+                </div>
+    
+      {% endif %}    
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>
+<script>
+  function validate(){
+      var uname = document.upform.name2.value;
+      if(uname == ''){
+          document.getElementById('usererror').style.display='block';
+          return false;
+      } else {
+          document.getElementById('usererror').style.display='none';
+      } 
+      var regexp1=new RegExp("[^a-z|^A-Z|^0-9]");
+      if(regexp1.test(uname))
+      {
+          document.getElementById('usererr').style.display='block';
+          return false;
+      } else {
+          document.getElementById('usererr').style.display='none';
+      }
+      
+      var pass = document.upform.pass2.value;
+      pass = pass.trim();
+      if (pass.length < 8){
+          document.getElementById('passlenerror').style.display='block';
+          return false;
+      } else {
+          document.getElementById('passlenerror').style.display='none';
+
+      }
+      
+  }
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

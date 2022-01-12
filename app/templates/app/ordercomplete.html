@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+
+
+<!-- Mirrored from template.hasthemes.com/pustok/pustok/order-complete.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Dec 2021 14:10:34 GMT -->
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Pustok - Book Store HTML Template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Use Minified Plugins Version For Fast Page Load -->
+	<link rel="stylesheet" type="text/css" media="screen" href="{% static 'app/css/plugins1.css' %}" />
+	<link rel="stylesheet" type="text/css" media="screen" href="{% static 'app/css/main1.css' %}" />
+	<link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico">
+</head>
+
+<body>
+	<div class="site-wrapper" id="top">
+
+		<div class="site-mobile-menu">
+			<header class="mobile-header d-block d-lg-none pt--10 pb-md--10">
+				<div class="container">
+					<div class="row align-items-sm-end align-items-center">
+						<div class="col-md-4 col-7">
+							<a href="index.html" class="site-brand">
+								<img src="image/logo.png" alt="">
+							</a>
+						</div>
+						<div class="col-md-5 order-3 order-md-2">
+
+						</div>
+						<div class="col-md-3 col-5  order-md-3 text-right">
+							<div class="mobile-header-btns header-top-widget">
+								<ul class="header-links">
+									<li class="sin-link">
+										<a href="cart.html" class="cart-link link-icon"><i class="ion-bag"></i></a>
+									</li>
+									<li class="sin-link">
+										<a href="javascript:" class="link-icon hamburgur-icon off-canvas-btn"><i
+												class="ion-navicon"></i></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!--Off Canvas Navigation Start-->
+
+			<!--Off Canvas Navigation End-->
+		</div>
+
+		<section class="breadcrumb-section">
+			<h2 class="sr-only">Site Breadcrumb</h2>
+			<div class="container">
+				<div class="breadcrumb-contents">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="/">Home</a></li>
+							<li class="breadcrumb-item active">Order Complete</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</section>
+
+		<!-- order complete Page Start -->
+		<section class="order-complete inner-page-sec-padding-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="order-complete-message text-center">
+							<h1>Thank you !</h1>
+							<p>Your order has been received.</p>
+						</div>
+						<ul class="order-details-list">
+							<!-- <li>Order Number: <strong>3053</strong></li> -->
+							<li>Date: <strong>{{value2.date_added}}</strong></li>
+							<li>Total: <strong>&#x20b9;{{value2.total}}</strong></li>
+							<li>Payment Method: <strong>{{value2.mode}}</strong></li>
+						</ul>
+						<p>Pay with cash upon delivery.</p>
+						<h3 class="order-table-title">Order Details</h3>
+						<div class="table-responsive">
+							<table class="table order-details-table">
+								<thead>
+									<tr>
+										<th>Product</th>
+										<th>Total</th>
+									</tr>
+								</thead>
+								{% for i in value %}
+								<tbody>
+									<tr>
+										<td><a href="single-product.html">{{i.product.name}}</a> <strong>×
+												{{i.quantity}}</strong></td>
+										<td><span>&#x20b9;{{i.price}}</span></td>
+									</tr>
+
+								</tbody>
+								{% endfor %}
+								<tfoot>
+									<tr>
+										<th>Subtotal:</th>
+										<td><span>&#x20b9;{{value2.total}}</span></td>
+									</tr>
+									<tr>
+										<th>Payment Method:</th>
+										<td>{{value2.mode}}</td>
+									</tr>
+									<tr>
+										<th>Total:</th>
+										<td><span>&#x20b9;{{value2.total}}</span></td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- order complete Page End -->
+	</div>
+	<!--=================================
+  Brands Slider
+===================================== -->
+	
+
+	<!-- Use Minified Plugins Version For Fast Page Load -->
+	<script src="js/plugins.js"></script>
+	<script src="js/ajax-mail.js"></script>
+	<script src="js/custom.js"></script>
+</body>
+
+
+<!-- Mirrored from template.hasthemes.com/pustok/pustok/order-complete.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Dec 2021 14:10:34 GMT -->
+
+</html>
